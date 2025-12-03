@@ -1,0 +1,598 @@
+{
+	"info": {
+		"_postman_id": "bus-booking-api-collection",
+		"name": "Bus Booking System API",
+		"description": "Complete API collection for Bus Booking System with all endpoints",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Buses",
+			"item": [
+				{
+					"name": "Get All Buses",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/buses",
+							"host": ["{{base_url}}"],
+							"path": ["api", "buses"]
+						},
+						"description": "Retrieve all buses in the system"
+					}
+				},
+				{
+					"name": "Get Bus by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/buses/{{bus_id}}",
+							"host": ["{{base_url}}"],
+							"path": ["api", "buses", "{{bus_id}}"]
+						},
+						"description": "Get details of a specific bus by ID"
+					}
+				},
+				{
+					"name": "Get Active Buses",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/buses/active",
+							"host": ["{{base_url}}"],
+							"path": ["api", "buses", "active"]
+						},
+						"description": "Get all active buses"
+					}
+				},
+				{
+					"name": "Get Buses by Type",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/buses/type/AC Sleeper",
+							"host": ["{{base_url}}"],
+							"path": ["api", "buses", "type", "AC Sleeper"]
+						},
+						"description": "Get buses filtered by type (AC Sleeper, Non-AC Sleeper, etc.)"
+					}
+				},
+				{
+					"name": "Create Bus",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"busNumber\": \"MH12AB1234\",\n  \"busName\": \"Volvo Multi-Axle\",\n  \"busType\": \"AC Sleeper\",\n  \"operatorName\": \"RedBus Travels\",\n  \"totalSeats\": 40,\n  \"amenities\": [\"WiFi\", \"Charging Point\", \"Water Bottle\", \"Blanket\", \"Reading Light\"],\n  \"imageUrl\": \"https://images.unsplash.com/photo-1544620347-c4fd4a3d5957\",\n  \"rows\": 10,\n  \"seatsPerRow\": 4,\n  \"isActive\": true,\n  \"seatLayout\": {\n    \"type\": \"2x2\",\n    \"unavailableSeats\": []\n  }\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/buses",
+							"host": ["{{base_url}}"],
+							"path": ["api", "buses"]
+						},
+						"description": "Create a new bus"
+					}
+				},
+				{
+					"name": "Update Bus",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"busNumber\": \"MH12AB1234\",\n  \"busName\": \"Volvo Multi-Axle Updated\",\n  \"busType\": \"AC Sleeper\",\n  \"operatorName\": \"RedBus Travels\",\n  \"totalSeats\": 40,\n  \"amenities\": [\"WiFi\", \"Charging Point\", \"Water Bottle\"],\n  \"imageUrl\": \"https://images.unsplash.com/photo-1544620347-c4fd4a3d5957\",\n  \"rows\": 10,\n  \"seatsPerRow\": 4,\n  \"isActive\": true,\n  \"seatLayout\": {\n    \"type\": \"2x2\",\n    \"unavailableSeats\": []\n  }\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/buses/{{bus_id}}",
+							"host": ["{{base_url}}"],
+							"path": ["api", "buses", "{{bus_id}}"]
+						},
+						"description": "Update an existing bus"
+					}
+				},
+				{
+					"name": "Delete Bus",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/buses/{{bus_id}}",
+							"host": ["{{base_url}}"],
+							"path": ["api", "buses", "{{bus_id}}"]
+						},
+						"description": "Delete a bus by ID"
+					}
+				}
+			],
+			"description": "All bus management endpoints"
+		},
+		{
+			"name": "Routes",
+			"item": [
+				{
+					"name": "Get All Routes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/routes",
+							"host": ["{{base_url}}"],
+							"path": ["api", "routes"]
+						},
+						"description": "Retrieve all routes"
+					}
+				},
+				{
+					"name": "Get Route by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/routes/{{route_id}}",
+							"host": ["{{base_url}}"],
+							"path": ["api", "routes", "{{route_id}}"]
+						},
+						"description": "Get details of a specific route"
+					}
+				},
+				{
+					"name": "Search Routes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/routes/search?fromCity=Mumbai&toCity=Pune",
+							"host": ["{{base_url}}"],
+							"path": ["api", "routes", "search"],
+							"query": [
+								{
+									"key": "fromCity",
+									"value": "Mumbai"
+								},
+								{
+									"key": "toCity",
+									"value": "Pune"
+								}
+							]
+						},
+						"description": "Search routes by source and destination cities"
+					}
+				},
+				{
+					"name": "Get Routes by Bus",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/routes/bus/{{bus_id}}",
+							"host": ["{{base_url}}"],
+							"path": ["api", "routes", "bus", "{{bus_id}}"]
+						},
+						"description": "Get all routes for a specific bus"
+					}
+				},
+				{
+					"name": "Create Route",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"busId\": \"{{bus_id}}\",\n  \"fromCity\": \"Mumbai\",\n  \"toCity\": \"Pune\",\n  \"departureTime\": \"22:00\",\n  \"arrivalTime\": \"04:00\",\n  \"duration\": \"6h 00m\",\n  \"distance\": 150,\n  \"baseFare\": 500,\n  \"boardingPoints\": [\"Dadar\", \"Thane\", \"Kalyan\", \"Panvel\"],\n  \"droppingPoints\": [\"Wakad\", \"Hinjewadi\", \"Shivaji Nagar\", \"Swargate\"],\n  \"daysOfOperation\": [\"Monday\", \"Tuesday\", \"Wednesday\", \"Thursday\", \"Friday\", \"Saturday\", \"Sunday\"],\n  \"isActive\": true\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/routes",
+							"host": ["{{base_url}}"],
+							"path": ["api", "routes"]
+						},
+						"description": "Create a new route"
+					}
+				},
+				{
+					"name": "Update Route",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"busId\": \"{{bus_id}}\",\n  \"fromCity\": \"Mumbai\",\n  \"toCity\": \"Pune\",\n  \"departureTime\": \"22:30\",\n  \"arrivalTime\": \"04:30\",\n  \"duration\": \"6h 00m\",\n  \"distance\": 150,\n  \"baseFare\": 550,\n  \"boardingPoints\": [\"Dadar\", \"Thane\", \"Kalyan\"],\n  \"droppingPoints\": [\"Wakad\", \"Hinjewadi\", \"Shivaji Nagar\"],\n  \"daysOfOperation\": [\"Monday\", \"Tuesday\", \"Wednesday\", \"Thursday\", \"Friday\"],\n  \"isActive\": true\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/routes/{{route_id}}",
+							"host": ["{{base_url}}"],
+							"path": ["api", "routes", "{{route_id}}"]
+						},
+						"description": "Update an existing route"
+					}
+				},
+				{
+					"name": "Delete Route",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/routes/{{route_id}}",
+							"host": ["{{base_url}}"],
+							"path": ["api", "routes", "{{route_id}}"]
+						},
+						"description": "Delete a route by ID"
+					}
+				}
+			],
+			"description": "All route management endpoints"
+		},
+		{
+			"name": "Bookings",
+			"item": [
+				{
+					"name": "Get All Bookings",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/bookings",
+							"host": ["{{base_url}}"],
+							"path": ["api", "bookings"]
+						},
+						"description": "Retrieve all bookings"
+					}
+				},
+				{
+					"name": "Get Booking by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/bookings/{{booking_id}}",
+							"host": ["{{base_url}}"],
+							"path": ["api", "bookings", "{{booking_id}}"]
+						},
+						"description": "Get details of a specific booking"
+					}
+				},
+				{
+					"name": "Get Booking by Number",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/bookings/number/{{booking_number}}",
+							"host": ["{{base_url}}"],
+							"path": ["api", "bookings", "number", "{{booking_number}}"]
+						},
+						"description": "Get booking by booking number (e.g., BUS12345678)"
+					}
+				},
+				{
+					"name": "Get User Bookings",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/bookings/user/{{user_id}}",
+							"host": ["{{base_url}}"],
+							"path": ["api", "bookings", "user", "{{user_id}}"]
+						},
+						"description": "Get all bookings for a specific user"
+					}
+				},
+				{
+					"name": "Get Booked Seats",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/bookings/booked-seats?busId={{bus_id}}&routeId={{route_id}}&journeyDate=2024-12-15",
+							"host": ["{{base_url}}"],
+							"path": ["api", "bookings", "booked-seats"],
+							"query": [
+								{
+									"key": "busId",
+									"value": "{{bus_id}}"
+								},
+								{
+									"key": "routeId",
+									"value": "{{route_id}}"
+								},
+								{
+									"key": "journeyDate",
+									"value": "2024-12-15"
+								}
+							]
+						},
+						"description": "Get list of booked seats for a specific bus, route, and date"
+					}
+				},
+				{
+					"name": "Create Booking",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"userId\": \"user123\",\n  \"busId\": \"{{bus_id}}\",\n  \"routeId\": \"{{route_id}}\",\n  \"passengerDetails\": {\n    \"name\": \"John Doe\",\n    \"email\": \"john@example.com\",\n    \"phone\": \"+919876543210\",\n    \"age\": 30,\n    \"gender\": \"Male\"\n  },\n  \"journeyDate\": \"2024-12-15\",\n  \"fromCity\": \"Mumbai\",\n  \"toCity\": \"Pune\",\n  \"boardingPoint\": \"Dadar\",\n  \"droppingPoint\": \"Wakad\",\n  \"seatNumbers\": [\"1A\", \"1B\"],\n  \"numberOfSeats\": 2,\n  \"totalFare\": 1000,\n  \"paymentStatus\": \"PENDING\",\n  \"paymentMethod\": \"STRIPE\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/bookings",
+							"host": ["{{base_url}}"],
+							"path": ["api", "bookings"]
+						},
+						"description": "Create a new booking"
+					}
+				},
+				{
+					"name": "Update Booking",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"paymentStatus\": \"COMPLETED\",\n  \"paymentId\": \"pay_123456789\",\n  \"transactionId\": \"txn_987654321\",\n  \"status\": \"CONFIRMED\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/bookings/{{booking_id}}",
+							"host": ["{{base_url}}"],
+							"path": ["api", "bookings", "{{booking_id}}"]
+						},
+						"description": "Update booking details (payment status, etc.)"
+					}
+				},
+				{
+					"name": "Cancel Booking",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/bookings/{{booking_id}}/cancel",
+							"host": ["{{base_url}}"],
+							"path": ["api", "bookings", "{{booking_id}}", "cancel"]
+						},
+						"description": "Cancel a booking and process refund"
+					}
+				}
+			],
+			"description": "All booking management endpoints"
+		},
+		{
+			"name": "Payments",
+			"item": [
+				{
+					"name": "Process Payment - Stripe",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"bookingId\": \"{{booking_id}}\",\n  \"amount\": 1000,\n  \"currency\": \"INR\",\n  \"paymentMethod\": \"stripe\",\n  \"cardNumber\": \"4242424242424242\",\n  \"cardExpiry\": \"12/25\",\n  \"cardCvv\": \"123\",\n  \"email\": \"john@example.com\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/payments/process",
+							"host": ["{{base_url}}"],
+							"path": ["api", "payments", "process"]
+						},
+						"description": "Process payment using Stripe"
+					}
+				},
+				{
+					"name": "Process Payment - Razorpay",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"bookingId\": \"{{booking_id}}\",\n  \"amount\": 1000,\n  \"currency\": \"INR\",\n  \"paymentMethod\": \"razorpay\",\n  \"email\": \"john@example.com\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/payments/process",
+							"host": ["{{base_url}}"],
+							"path": ["api", "payments", "process"]
+						},
+						"description": "Process payment using Razorpay"
+					}
+				}
+			],
+			"description": "Payment processing endpoints"
+		},
+		{
+			"name": "Sample Workflows",
+			"item": [
+				{
+					"name": "Complete Booking Flow",
+					"item": [
+						{
+							"name": "1. Search Routes",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/routes/search?fromCity=Mumbai&toCity=Pune",
+									"host": ["{{base_url}}"],
+									"path": ["api", "routes", "search"],
+									"query": [
+										{
+											"key": "fromCity",
+											"value": "Mumbai"
+										},
+										{
+											"key": "toCity",
+											"value": "Pune"
+										}
+									]
+								}
+							}
+						},
+						{
+							"name": "2. Get Bus Details",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/buses/{{bus_id}}",
+									"host": ["{{base_url}}"],
+									"path": ["api", "buses", "{{bus_id}}"]
+								}
+							}
+						},
+						{
+							"name": "3. Check Seat Availability",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/bookings/booked-seats?busId={{bus_id}}&routeId={{route_id}}&journeyDate=2024-12-15",
+									"host": ["{{base_url}}"],
+									"path": ["api", "bookings", "booked-seats"],
+									"query": [
+										{
+											"key": "busId",
+											"value": "{{bus_id}}"
+										},
+										{
+											"key": "routeId",
+											"value": "{{route_id}}"
+										},
+										{
+											"key": "journeyDate",
+											"value": "2024-12-15"
+										}
+									]
+								}
+							}
+						},
+						{
+							"name": "4. Create Booking",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"userId\": \"user123\",\n  \"busId\": \"{{bus_id}}\",\n  \"routeId\": \"{{route_id}}\",\n  \"passengerDetails\": {\n    \"name\": \"John Doe\",\n    \"email\": \"john@example.com\",\n    \"phone\": \"+919876543210\",\n    \"age\": 30,\n    \"gender\": \"Male\"\n  },\n  \"journeyDate\": \"2024-12-15\",\n  \"fromCity\": \"Mumbai\",\n  \"toCity\": \"Pune\",\n  \"boardingPoint\": \"Dadar\",\n  \"droppingPoint\": \"Wakad\",\n  \"seatNumbers\": [\"1A\", \"1B\"],\n  \"numberOfSeats\": 2,\n  \"totalFare\": 1000,\n  \"paymentStatus\": \"PENDING\",\n  \"paymentMethod\": \"STRIPE\"\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/api/bookings",
+									"host": ["{{base_url}}"],
+									"path": ["api", "bookings"]
+								}
+							}
+						},
+						{
+							"name": "5. Process Payment",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"bookingId\": \"{{booking_id}}\",\n  \"amount\": 1000,\n  \"currency\": \"INR\",\n  \"paymentMethod\": \"stripe\",\n  \"cardNumber\": \"4242424242424242\",\n  \"cardExpiry\": \"12/25\",\n  \"cardCvv\": \"123\",\n  \"email\": \"john@example.com\"\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/api/payments/process",
+									"host": ["{{base_url}}"],
+									"path": ["api", "payments", "process"]
+								}
+							}
+						},
+						{
+							"name": "6. Get Booking Confirmation",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/bookings/{{booking_id}}",
+									"host": ["{{base_url}}"],
+									"path": ["api", "bookings", "{{booking_id}}"]
+								}
+							}
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8080",
+			"type": "string"
+		},
+		{
+			"key": "bus_id",
+			"value": "your_bus_id_here",
+			"type": "string"
+		},
+		{
+			"key": "route_id",
+			"value": "your_route_id_here",
+			"type": "string"
+		},
+		{
+			"key": "booking_id",
+			"value": "your_booking_id_here",
+			"type": "string"
+		},
+		{
+			"key": "booking_number",
+			"value": "BUS12345678",
+			"type": "string"
+		},
+		{
+			"key": "user_id",
+			"value": "user123",
+			"type": "string"
+		}
+	]
+}
